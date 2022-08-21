@@ -2,12 +2,19 @@
     "name": "phase-4-proj",
     "description": "Build scripts for Heroku",
     "engines": {
-      "node": ">= 14"
+        "node": ">= 14"
     },
     "scripts": {
-      "build": "npm install --prefix client && npm run build --prefix client",
-      "clean": "rm -rf public",
-      "deploy": "cp -a client/build/. public/",
-      "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+        "build": "npm install --prefix client && npm run build --prefix client",
+        "clean": "rm -rf public",
+        "deploy": "cp -a client/build/. public/",
+        "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.1.8"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.6.6",
+        "@heroicons/react": "^1.0.6"
     }
-  }
+}
