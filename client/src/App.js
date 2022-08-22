@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import BookCard from "./BookCard";
+import Navbar from "./components/Navbar";
+import Login from "./components/LogIn";
+import Signup from "./components/Signup";
+import BooksContainer from "./components/BooksContainer";
+import BookCard from "./components/BookCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,14 +19,11 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
-          </Route>
+          <Route path="/login"><Login/></Route>
+          <Route path='/signup'><Signup/></Route>
           <Route path="/">
             <Navbar/>
-              
-                
-            <BookCard className="bg-indigo-600 w-full h-screen"/>
+            <BookCard/>
           </Route>
         </Switch>
       </div>
