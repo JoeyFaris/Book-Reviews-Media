@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./Navbar";
+import BookCard from "./BookCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,9 +21,9 @@ function App() {
           </Route>
           <Route path="/">
             <Navbar/>
-              <>
-                <div className="bg-indigo-600 w-full h-screen"></div>
-              </>
+              
+                
+            <BookCard className="bg-indigo-600 w-full h-screen"/>
           </Route>
         </Switch>
       </div>
