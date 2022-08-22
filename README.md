@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Phase 4 Project
 
-Things you may want to cover:
+Created by: Joey Faris
 
-* Ruby version
+This project will be created as a social media platform for book reviewing purposes. The main goals of the project are as follows:
 
-* System dependencies
+MVP: As a user, I can:
+ • Log into website with name, email, and password credentials.
+ • View a list of cards that will show book information (Title, author, description, photo, and amazon link)
+ • Add your own book with all of the book information to the site.
+ • Write and delete a review and comment for each book on the website.
+ 
+The front end development of this project will consist of React.js for the functionality and CSS/Tailwind CSS for the appearance.
 
-* Configuration
+All backend development will be created using Ruby on Rails. I will be creating a custom API with the following models and tables:
 
-* Database creation
+![Tables](Screen Shot 2022-08-21 at 4.57.53 PM.png)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Thank you.
