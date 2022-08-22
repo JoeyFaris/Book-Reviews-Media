@@ -16,6 +16,7 @@ The front end development of this project will consist of React.js for the funct
 
 All backend development will be created using Ruby on Rails. I will be creating a custom API with the following models and tables:
 
-![Tables](Screen Shot 2022-08-21 at 4.57.53 PM.png)
+# Tables:
+![Tables](Tables.png)
 
 Thank you.
