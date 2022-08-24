@@ -7,23 +7,25 @@ import BooksContainer from "./components/BooksContainer";
 import BookCard from "./components/BookCard";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [books, setBooks] = useState([]);
+  const [currentUser, setCurrentUser] = useState(false)
+  const updateUser = (user) => setCurrentUser(user)
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/books")
       .then((r) => r.json())
-      .then((data) => setCount(data.count));
+      .then((data) => setBooks(data));
   }, []);
 
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/login"><Login/></Route>
-          <Route path='/signup'><Signup/></Route>
+          <Route path="/login"><Login updateUser={updateUser}/></Route>
+          <Route path='/signup'><Signup updateUser={updateUser}/></Route>
           <Route path="/">
             <Navbar/>
-            <BookCard/>
+            <BooksContainer books={books}/>
           </Route>
         </Switch>
       </div>

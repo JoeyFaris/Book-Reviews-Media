@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import Button from "./Button"
-import { useNavigate } from 'react-router-dom'
+
 
 const NavBar = () => {
     let Links = [

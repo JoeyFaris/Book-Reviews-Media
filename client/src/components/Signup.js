@@ -1,6 +1,36 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
+import React, {useState} from 'react'
+import { useHistory } from "react-router-dom"
 
-export default function Signup() {
+export default function Signup({updateUser}) {
+
+  let navigate = useHistory({updateUser})
+  const [errors, setErrors] = useState([])
+  const [formObj, setFormObj] = useState ({
+    username: "",
+    password: ""
+})
+
+  function handleSubmit(e){
+    e.preventDefault()
+    fetch('/login', {
+      method: "POST",
+      headers:{"Content-Type": "Application/json"},
+      body:JSON.stringify(formObj)
+    })
+    .then(res => {
+      if(res.ok) {
+        res.json().then(user => {
+          updateUser({id: user.id, username: user.username})
+          navigate(`/`)
+          
+        })
+      } else {
+        res.json().then(json => setErrors(Object.entries(json.errors)))
+      }
+    })
+  }
+
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -11,7 +41,7 @@ export default function Signup() {
             </h2>
             
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
