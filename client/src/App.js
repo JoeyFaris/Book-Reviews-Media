@@ -4,25 +4,39 @@ import Navbar from "./components/Navbar";
 import Login from "./components/LogIn";
 import Signup from "./components/Signup";
 import BooksContainer from "./components/BooksContainer";
-import BookCard from "./components/BookCard";
+import AddBook from "./components/AddBook";
+
 
 function App() {
   const [books, setBooks] = useState([]);
-  const [currentUser, setCurrentUser] = useState(false)
-  const updateUser = (user) => setCurrentUser(user)
-
+//Grabbing initial data
   useEffect(() => {
     fetch("/books")
       .then((r) => r.json())
       .then((data) => setBooks(data));
   }, []);
 
+  // useEffect(() => {
+  //   fetch("/me").then((response) => {
+  //     if (response.ok) {
+  //       response.json()
+  //       .then((user) => {
+  //         // console.log(user)
+  //         setUser(user)
+  //       });
+  //     }
+  //   });
+  // }, []);
+
+
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/login"><Login updateUser={updateUser}/></Route>
-          <Route path='/signup'><Signup updateUser={updateUser}/></Route>
+          <Route path="/login"><Login /></Route>
+          <Route path='/signup'><Signup  /></Route>
+          <Route path='/addbook'><AddBook /></Route>
+  
           <Route path="/">
             <Navbar/>
             <BooksContainer books={books}/>

@@ -1,43 +1,33 @@
 import React, {useState} from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 
-export default function Login({updateUser}) {
+export default function Login() {
 
-  // let navigate = useNavigate({updateUser})
-  // const [errors, setErrors] = useState([])
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  //   const navigate = useNavigate()
 
-  function handleSubmit(e){
-    e.preventDefault()
-    fetch('/login', {
-      method: "POST",
-      headers:{"Content-Type": "Application/json"},
-      body:JSON.stringify({
-        username, 
-        password, 
-        password_confirmation: passwordConfirmation
-      })
-    })
-      .then((r) => r.json())
-      .then(console.log);
-  }
-    
-  //   .then(res => {
-  //     if(res.ok) {
-  //       res.json().then(user => {
-  //         updateUser({id: user.id, username: user.username})
-  //         navigate(`/`)
-  //         // will add redirect
+  //   function handleSubmit(e) {
+  //       e.preventDefault();
+  //       const userObj = {
+  //           username: username,
+  //           password: password
+  //       }
+  //       fetch("/login", {
+  //           method: "POST",
+  //           headers: {
+  //               "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(userObj),
   //       })
-  //     } else {
-  //       res.json().then(json => setErrors(Object.entries(json.errors)))
-  //     }
-  //   })
-  // }
+  //       .then((r) => r.json())
+  //       .then((user) => {
+  //           setUser(user)
+  //           console.log(user)
+  //           navigate('/')
+  //       })
+  //   }
 
   return (
     <>
@@ -54,7 +44,7 @@ export default function Login({updateUser}) {
               </a>
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          <form className="mt-8 space-y-6">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>

@@ -1,11 +1,11 @@
 import React, {useState} from "react"
-import Button from "./Button"
+
 
 
 const NavBar = () => {
     let Links = [
         {name:"HOME",link:'/'},
-        {name:"ADD BOOK",link:'/'},
+        {name:"ADD BOOK",link:'/addbook'},
         {name:"TOP 10",link:'/'},
         {name:"ABOUT US",link:'/'},
         {name:"LOGIN", link:'/login' }
@@ -15,7 +15,8 @@ const NavBar = () => {
 
     
     return (
-        <div className='shadow-md w-full Z-999 fixed pb-25 mb-25 top-0 left-0'>
+        
+        <div className='bg-indigo-600 shadow-md w-full Z-999 fixed relative pb-25 mb-25 top-0 left-0'>
             <div className='md:flex items-center justify-between bg-white py-7 md:px-10 px-7'>
             <div className='text-xl font-bold text-3x1 cursor-pointer flex items-center font-[Poppins] text-gray-800'>
                 <span className='text-3x1 text-indigo-600 mr-1 pt-2'>
@@ -33,11 +34,10 @@ const NavBar = () => {
                   <a href={Link.link} className='text-gray-800 hover:text-gray-400 duration-500'>{Link.name}</a>
               </li>
               )}
-               {/* <button className='bg-indigo-600 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500'>LOG IN
-        </button> */}
             </ul>
             </div>
         </div>
+    
     )
 }
 
