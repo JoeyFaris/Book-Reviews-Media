@@ -9,24 +9,18 @@ import AddBook from "./components/AddBook";
 
 function App() {
   const [books, setBooks] = useState([]);
-//Grabbing initial data
+
+
+//Grabbing book data
   useEffect(() => {
     fetch("/books")
       .then((r) => r.json())
       .then((data) => setBooks(data));
   }, []);
+  
 
-  // useEffect(() => {
-  //   fetch("/me").then((response) => {
-  //     if (response.ok) {
-  //       response.json()
-  //       .then((user) => {
-  //         // console.log(user)
-  //         setUser(user)
-  //       });
-  //     }
-  //   });
-  // }, []);
+
+ 
 
 
   return (
