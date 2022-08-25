@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Button from "./Button"
 
 
 
@@ -6,9 +7,9 @@ const NavBar = () => {
     let Links = [
         {name:"HOME",link:'/'},
         {name:"ADD BOOK",link:'/addbook'},
-        {name:"TOP 10",link:'/'},
+        {name:"MOST RECENT",link:'/'},
         {name:"ABOUT US",link:'/'},
-        {name:"LOGIN", link:'/login' }
+        
     ]
     const [open, setOpen] = useState(false)
     
@@ -35,6 +36,7 @@ const NavBar = () => {
               </li>
               )}
             </ul>
+            <Button></Button>
             </div>
         </div>
     
