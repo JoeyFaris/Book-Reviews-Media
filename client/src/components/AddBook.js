@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
 function AddBook() {
     const [title, setTitle] = useState("");
@@ -6,6 +7,7 @@ function AddBook() {
     const [description, setDescription] = useState("");
     const [img_url, setImgUrl] = useState("");
     const [amazon_url, setAmazonUrl] = useState("");
+    let navigate = useHistory()
     
   
     function handleSubmit(e) {
@@ -21,9 +23,10 @@ function AddBook() {
               description: description,
               img_url: img_url,
               amazon_url: amazon_url,
+              
             }),
           })
-          .then((res) => console.log(res))
+          .then((res) => console.log(res)).then(navigate('/'))
 
     console.log('hello')
     };

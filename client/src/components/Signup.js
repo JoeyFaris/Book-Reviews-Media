@@ -1,32 +1,37 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
 import React, {useState} from 'react'
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-export default function Signup({updateUser}) {
+export default function Signup({setUser}) {
 
-  let navigate = useHistory({updateUser})
-  const [errors, setErrors] = useState([])
-  const [formObj, setFormObj] = useState ({
-    username: "",
-    password: ""
-})
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+  let navigate = useNavigate()
 
   function handleSubmit(e){
     e.preventDefault()
-    fetch('/login', {
+    fetch('/signup', {
       method: "POST",
       headers:{"Content-Type": "Application/json"},
-      body:JSON.stringify(formObj)
+      body:JSON.stringify({
+        username,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+    }),
+    
     })
     .then(res => {
       if(res.ok) {
         res.json().then(user => {
-          updateUser({id: user.id, username: user.username})
-          navigate(`/`)
-          
+          setUser({id: user.id, username: user.username})
+          navigate('/')
         })
-      } else {
-        res.json().then(json => setErrors(Object.entries(json.errors)))
+      } else{
+        console.log(res)
       }
     })
   }
@@ -62,11 +67,13 @@ export default function Signup({updateUser}) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div>
                 <label htmlFor="email-address" className="sr-only">
-                  Password
+                  Email address
                 </label>
                 <input
                   id="email-address"
@@ -76,6 +83,8 @@ export default function Signup({updateUser}) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email Addresss"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -90,6 +99,26 @@ export default function Signup({updateUser}) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  
+                />
+              </div>
+              <div>
+                <label htmlFor="password_confirmation" className="sr-only">
+                  Confirm Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Confirm password"
+                  value={passwordConfirmation}
+                  onChange={(e) => setPasswordConfirmation(e.target.value)}
+                  
                 />
               </div>
             </div>

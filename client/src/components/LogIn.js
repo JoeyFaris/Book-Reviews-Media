@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { useHistory } from "react-router-dom"
 
-export default function Login() {
+export default function Login({}) {
 
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
