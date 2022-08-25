@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
-// import { useNavigate } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
-export default function Login() {
+export default function Login({}) {
 
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
-  //   const navigate = useNavigate()
+  //   const navigate = useHistory()
 
   //   function handleSubmit(e) {
   //       e.preventDefault();
@@ -91,8 +91,8 @@ export default function Login() {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Forgot your password?
+                <a href="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  Back to Home Page
                 </a>
               </div>
             </div>

@@ -7,36 +7,40 @@ import BooksContainer from "./components/BooksContainer";
 import AddBook from "./components/AddBook";
 
 
-function App() {
+export default function App() {
   const [books, setBooks] = useState([]);
-//Grabbing initial data
+  const [currentUser, setCurrentUser] = useState(false)
+  const setUser = (user) => setCurrentUser(user)
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json()
+        .then((user) => {
+          setUser(user)
+        });
+      }
+    });
+  }, []);
+
   useEffect(() => {
     fetch("/books")
       .then((r) => r.json())
       .then((data) => setBooks(data));
   }, []);
+  
 
-  // useEffect(() => {
-  //   fetch("/me").then((response) => {
-  //     if (response.ok) {
-  //       response.json()
-  //       .then((user) => {
-  //         // console.log(user)
-  //         setUser(user)
-  //       });
-  //     }
-  //   });
-  // }, []);
+
+ 
 
 
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/login"><Login /></Route>
-          <Route path='/signup'><Signup  /></Route>
+          <Route path="/login"><Login setuser={setUser}/></Route>
+          <Route path='/signup'><Signup setuser={setUser}/></Route>
           <Route path='/addbook'><AddBook /></Route>
-  
           <Route path="/">
             <Navbar/>
             <BooksContainer books={books}/>
@@ -47,4 +51,3 @@ function App() {
   );
 }
 
-export default App;
