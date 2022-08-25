@@ -39,6 +39,12 @@ export default function Signup({updateUser}) {
             <h2 className="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900">
               Sign up here
             </h2>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Or{' '}
+              <a href="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                go back to the home page
+              </a>
+              </p>
             
           </div>
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
