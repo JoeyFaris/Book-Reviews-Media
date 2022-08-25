@@ -1,6 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function AddBook() {
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
+    const [description, setDescription] = useState("");
+    const [img_url, setImgUrl] = useState("");
+    const [amazon_url, setAmazonUrl] = useState("");
+    
+  
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch("/books", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: title,
+              author: author,
+              description: description,
+              img_url: img_url,
+              amazon_url: amazon_url,
+            }),
+          })
+          .then((res) => console.log(res))
+
+    console.log('hello')
+    };
 
     return (
         <>
@@ -17,7 +43,7 @@ function AddBook() {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -32,6 +58,8 @@ function AddBook() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div>
@@ -46,6 +74,8 @@ function AddBook() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Author"
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
                 />
               </div>
               <div>
@@ -60,6 +90,8 @@ function AddBook() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
               <div>
@@ -74,6 +106,8 @@ function AddBook() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Image Link"
+                  value={img_url}
+                  onChange={(e) => setImgUrl(e.target.value)}
                 />
               </div>
               <div>
@@ -88,6 +122,8 @@ function AddBook() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Amazon Link"
+                  value={amazon_url}
+                  onChange={(e) => setAmazonUrl(e.target.value)}
                 />
               </div>
             </div>

@@ -4,6 +4,11 @@ class BooksController < ApplicationController
         books = Book.all
         render json: books
     end
+
+    def create
+        book = Book.create!(book_params)
+        render json: book, status: :created
+    end
     
     def destroy
         book = Book.find_by(id: params[:id])
@@ -13,5 +18,9 @@ class BooksController < ApplicationController
         else
             render json: {error: "Bird not found"}, status: :not_found
         end
+    end
+
+    def book_params
+        params.permit(:title, :author, :description, :amazon_url, :img_url)
     end
 end

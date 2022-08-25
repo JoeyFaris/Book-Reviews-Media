@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 
 
 function BookCard({book}) {
-    const {id, title, description, amazon_url, img_url} = book
+    const {id} = book
 
     function handleDelete() {
         fetch(`/books/${id}`, { method: 'DELETE' })

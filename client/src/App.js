@@ -29,7 +29,8 @@ function App() {
         <Switch>
           <Route path="/login"><Login /></Route>
           <Route path='/signup'><Signup  /></Route>
-          <Route path='/addbook'><AddBook /></Route>
+          <Route path='/addbook'><AddBook />
+          </Route>
   
           <Route path="/">
             <Navbar/>
